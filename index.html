@@ -28,17 +28,18 @@
         </div>
     </header>
 
+    
     <section class="trust-bar">
-        <div class="container">
-            <p>Expertise in:</p>
-            <div class="logos">
-                <span>PowerBI</span>
-                <span>Tableau</span>
-                <span>Excel Expert</span>
-                <span>SQL</span>
-                <!-- <span>Python</span> -->
-            </div>
+    <div class="container">
+        <p class="trust-label">PLATFORMS & CERTIFICATIONS</p>
+        <div class="logo-grid">
+            <div class="logo-item">Microsoft PowerBI</div>
+            <div class="logo-item">Tableau</div>
+            <div class="logo-item">CFA Institute</div>
+            <div class="logo-item">Oracle NetSuite</div>
+            <div class="logo-item">QuickBooks Pro</div>
         </div>
+    </div>
     </section>
 
     <section id="about" class="about">
@@ -79,6 +80,53 @@
             <h3>Is your data working as hard as you are?</h3>
             <a href="#" class="btn-main">Book a Data Audit</a>
         </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+    <div class="container grid-2">
+        <div class="contact-info">
+            <h2>Ready to Audit Your Data Strategy?</h2>
+            <p>Fill out the form to schedule a 20-minute discovery call. We'll discuss your current reporting bottlenecks and potential ROI.</p>
+            <ul class="contact-list">
+                <li><strong>✓</strong> Zero-commitment data assessment</li>
+                <li><strong>✓</strong> Confidentiality guaranteed (NDA-ready)</li>
+                <li><strong>✓</strong> Direct access to lead analyst</li>
+            </ul>
+        </div>
+        
+        <div class="form-container">
+            <form id="analyticsContactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Work Email</label>
+                    <input type="email" id="email" name="email" placeholder="john@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Interested In</label>
+                    <select id="service" name="service">
+                        <option value="reporting">Financial Reporting</option>
+                        <option value="dashboards">Custom Dashboards</option>
+                        <option value="automation">Data Automation</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Briefly describe your data challenges..."></textarea>
+                </div>
+                <button type="submit" class="btn-main full-width">Send Message</button>
+                <p class="privacy-note">🔒 Your data is processed securely and never shared.</p>
+            </form>
+            <div id="formSuccess" class="hidden">
+                <div class="success-content">
+                    <h3>Message Received!</h3>
+                    <p>I'll review your details and get back to you within 24 hours.</p>
+                </div>
+            </div>
+        </div>
+    </div>
     </section>
 
     <footer>

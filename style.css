@@ -183,3 +183,99 @@ footer {
     }
     .flex-between a { margin-top: 2rem; }
 }
+
+/* Logo Grid Styling */
+.trust-label {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--slate);
+    margin-bottom: 1.5rem;
+}
+
+.logo-grid {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.logo-item {
+    font-weight: 700;
+    color: #bdc3c7;
+    font-size: 1.1rem;
+    transition: 0.3s;
+    cursor: default;
+}
+
+.logo-item:hover {
+    color: var(--navy);
+}
+
+/* Contact Form Styling */
+.contact-section {
+    padding: 100px 0;
+    background-color: #fcfcfc;
+}
+
+.contact-list {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.contact-list li {
+    margin-bottom: 1rem;
+    color: var(--navy);
+    font-weight: 600;
+}
+
+.form-container {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.full-width {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.privacy-note {
+    font-size: 0.75rem;
+    color: var(--slate);
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.success-content {
+    text-align: center;
+    padding: 2rem;
+    color: var(--action-green);
+}
