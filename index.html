@@ -65,7 +65,7 @@
     </section>
 
     <section id="about" class="about">
-        <div class="container grid-2">
+        <div class="container grid-3">
             <div class="about-text">
                 <h2>Turning Data into Business Performance</h2>
                 <p>
@@ -78,7 +78,9 @@
                 <p class="italics">“From Data. To Decisions. To Delivery.”</p>
             </div>
             <div class="about-visual">
-                <div class="icon-box">📊</div>
+                <div class="icon-box">
+                    <!-- <img src="assets/geralt-blockchain-3145392_1920.jpg" alt="Data Blocks"> -->
+                </div>
             </div>
         </div>
     </section>
@@ -194,7 +196,7 @@
         </div>
         
         <div class="form-container">
-            <form id="analyticsContactForm">
+            <form id="analyticsContactForm" action="https://formspree.io/f/meevdgpv" method="POST">
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" placeholder="John Doe" required>
@@ -209,8 +211,8 @@
                         <option value="reporting">Financial Reporting</option>
                         <option value="dashboards">Custom Dashboards</option>
                         <option value="automation">Data Automation</option>
-                        <option value="automation">Project Management</option>
-                        <option value="automation">Workflow optmization</option>
+                        <option value="project-management">Project Management</option>
+                        <option value="workflow-optimization">Workflow Optimization</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -219,6 +221,8 @@
                 </div>
                 <button type="submit" class="btn-main full-width">Send Message</button>
                 <p class="privacy-note">🔒 Your data is processed securely and never shared.</p>
+                <input type="hidden" name="source" value="Contact Form - Praxis Insights">
+                
             </form>
             <div id="formSuccess" class="hidden">
                 <div class="success-content">
@@ -232,7 +236,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Financial Analytics Expert. All rights reserved.</p>
+            <p>&copy; 2026 Praxis Insights. All rights reserved.</p>
             <div class="footer-links">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>

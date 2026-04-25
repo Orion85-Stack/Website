@@ -20,26 +20,62 @@ document.querySelectorAll('section, .card').forEach(el => {
     observer.observe(el);
 });
 
-document.getElementById('analyticsContactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+// document.getElementById('analyticsContactForm').addEventListener('submit', function(e) {
+//     e.preventDefault();
     
-    // Simulate an API call / form submission
-    const btn = this.querySelector('button');
+//     // Simulate an API call / form submission
+//     const btn = this.querySelector('button');
+//     const originalText = btn.innerText;
+//     btn.innerText = "Processing...";
+//     btn.disabled = true;
+
+//     setTimeout(() => {
+//         // Hide form and show success message
+//         this.classList.add('hidden');
+//         document.getElementById('formSuccess').classList.remove('hidden');
+        
+//         console.log("Form Data Captured:", {
+//             name: document.getElementById('name').value,
+//             email: document.getElementById('email').value,
+//             service: document.getElementById('service').value
+//         });
+//     }, 1500);
+// });
+
+document.getElementById('analyticsContactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const form = this;
+    const data = new FormData(form);
+
+    const btn = form.querySelector('button');
     const originalText = btn.innerText;
-    btn.innerText = "Processing...";
+    btn.innerText = "Sending...";
     btn.disabled = true;
 
-    setTimeout(() => {
-        // Hide form and show success message
-        this.classList.add('hidden');
-        document.getElementById('formSuccess').classList.remove('hidden');
-        
-        console.log("Form Data Captured:", {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            service: document.getElementById('service').value
+    try {
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
         });
-    }, 1500);
+
+        if (response.ok) {
+            form.classList.add('hidden');
+            document.getElementById('formSuccess').classList.remove('hidden');
+        } else {
+            alert("Something went wrong. Please try again.");
+            btn.innerText = originalText;
+            btn.disabled = false;
+        }
+
+    } catch (error) {
+        alert("Error submitting form.");
+        btn.innerText = originalText;
+        btn.disabled = false;
+    }
 });
 
 document.getElementById('leadMagnetForm').addEventListener('submit', function(e) {
