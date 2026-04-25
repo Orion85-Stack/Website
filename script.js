@@ -84,8 +84,6 @@ document.getElementById('leadMagnetForm').addEventListener('submit', async funct
     }
 });
 
-
-
 MailApp.sendEmail({
   to: "mare.stephen@gmail.com.com",
   subject: "New Lead - Praxis Insights",

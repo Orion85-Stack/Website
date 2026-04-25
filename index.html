@@ -139,18 +139,6 @@
             </div>
 
             <div class="lead-form">
-                <!-- <form id="leadMagnetForm">
-                    <div class="form-group">
-                        <input type="text" placeholder="Full Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Work Email" required>
-                    </div>
-                    <button type="submit" class="btn-main full-width">
-                        Download Free Checklist
-                    </button>
-                    <p class="privacy-note">🔒 No spam. Just valuable insights.</p>
-                </form> -->
                 <form id="leadMagnetForm" action="https://formspree.io/f/meevdgpv" method="POST">
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Full Name" required>
@@ -166,16 +154,20 @@
                         Download Free Checklist
                     </button>
                     <p class="privacy-note">🔒 No spam. Just valuable insights.</p>
+                    <input type="hidden" name="source" value="Dashboard Checklist">
                 </form>
                 <div id="leadSuccess" class="hidden">
                     <div class="success-content">
-                        <h3>Your Download is Ready</h3>
-                        <p>If it didn’t open automatically, <a href="assets/dashboard-audit-checklist.pdf" target="_blank">click here</a>.</p>
+                        <h3>Your Checklist is Ready</h3>
+                        <p>Your download should open automatically.</p>
+                        <p>If not, <a href="assets/dashboard-audit-checklist.pdf" target="_blank">click here</a>.</p>
+
+                        <br>
+
+                        <p><strong>Want a personalised dashboard audit?</strong></p>
+                        <a href="#contact" class="btn-main">Book a Free Call</a>
                     </div>
                 </div>
-                <!-- <div id="leadSuccess" class="hidden">
-                    <p><strong>Check your inbox!</strong> Your checklist is on its way.</p>
-                </div> -->
             </div>
 
         </div>
@@ -184,7 +176,7 @@
     <section class="cta-bar">
         <div class="container flex-between">
             <h3>Is your data working as hard as you are?</h3>
-            <a href="#" class="btn-main">Book a Data Audit</a>
+            <a href="#contact" class="btn-main">Book a Data Audit</a>
         </div>
     </section>
 
