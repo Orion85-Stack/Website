@@ -51,39 +51,40 @@ document.getElementById('leadMagnetForm').addEventListener('submit', function(e)
     console.log("Lead magnet captured");
 });
 
-
 document.getElementById('leadMagnetForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    const name = this.querySelector('input[name="name"]').value;
-    const email = this.querySelector('input[name="email"]').value;
-
-    const data = {
-        name: name,
-        email: email,
-        source: "Dashboard Checklist"
-    };
+    const form = this;
+    const data = new FormData(form);
 
     try {
-        await fetch("https://docs.google.com/spreadsheets/d/19RrGKzQQ6KslgW16tUYpwnAVyI81w8A0Ss4jx36h1Xs/edit?gid=0#gid=0", {
-            method: "POST",
-            body: JSON.stringify(data),
+        // Send to Formspree
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: data,
             headers: {
-                "Content-Type": "application/json"
+                'Accept': 'application/json'
             }
         });
 
-        // Show success message
-        this.classList.add('hidden');
-        document.getElementById('leadSuccess').classList.remove('hidden');
+        if (response.ok) {
+            // Show success message
+            form.classList.add('hidden');
+            document.getElementById('leadSuccess').classList.remove('hidden');
 
-        // Trigger PDF download
-        window.open('assets/dashboard-audit-checklist.pdf', '_blank');
+            // Trigger PDF download
+            window.open('assets/dashboard-audit-checklist.pdf', '_blank');
+
+        } else {
+            alert("Something went wrong. Please try again.");
+        }
 
     } catch (error) {
-        alert("Something went wrong. Please try again.");
+        alert("Error submitting form.");
     }
 });
+
+
 
 MailApp.sendEmail({
   to: "mare.stephen@gmail.com.com",

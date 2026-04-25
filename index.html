@@ -139,13 +139,29 @@
             </div>
 
             <div class="lead-form">
-                <form id="leadMagnetForm">
+                <!-- <form id="leadMagnetForm">
                     <div class="form-group">
                         <input type="text" placeholder="Full Name" required>
                     </div>
                     <div class="form-group">
                         <input type="email" placeholder="Work Email" required>
                     </div>
+                    <button type="submit" class="btn-main full-width">
+                        Download Free Checklist
+                    </button>
+                    <p class="privacy-note">🔒 No spam. Just valuable insights.</p>
+                </form> -->
+                <form id="leadMagnetForm" action="https://formspree.io/f/meevdgpv" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Work Email" required>
+                    </div>
+
+                    <!-- Optional: tag the lead -->
+                    <input type="hidden" name="source" value="Dashboard Checklist">
+
                     <button type="submit" class="btn-main full-width">
                         Download Free Checklist
                     </button>
