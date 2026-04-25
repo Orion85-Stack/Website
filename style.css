@@ -201,11 +201,24 @@ footer {
 }
 
 .logo-item {
+    text-align: center;
     font-weight: 700;
     color: #bdc3c7;
     font-size: 1.1rem;
     transition: 0.3s;
     cursor: default;
+}
+
+.logo-item img {
+    max-width: 60px;
+    height: auto;
+    display: block;
+    margin: 0 auto 8px; /* space between image and text */
+}
+
+.logo-item span {
+    display: block;
+    font-size: 14px;
 }
 
 .logo-item:hover {
@@ -278,4 +291,16 @@ footer {
     text-align: center;
     padding: 2rem;
     color: var(--action-green);
+}
+
+.tagline {
+    margin-top: 1rem;
+    font-style: italic;
+    color: var(--slate);
+}
+
+.global-note {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--slate);
 }
