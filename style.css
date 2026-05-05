@@ -452,3 +452,133 @@ footer {
     opacity: 0;
     pointer-events: none;
 }
+
+/* Privacy Page */
+
+.privacy-hero {
+    background: var(--navy);
+    color: var(--white);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.privacy-hero h1 {
+    font-size: 2.6rem;
+    margin-bottom: 1rem;
+}
+
+.privacy-hero p {
+    color: var(--slate);
+    font-size: 1.1rem;
+}
+
+.privacy-updated {
+    margin-top: 1rem;
+    font-size: 0.9rem !important;
+    color: var(--action-green) !important;
+}
+
+.privacy-page {
+    background: #f9fbfc;
+    padding: 70px 0;
+}
+
+.privacy-content {
+    max-width: 900px;
+    background: var(--pure-white);
+    padding: 3rem;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.privacy-content section {
+    margin-bottom: 2.5rem;
+}
+
+.privacy-content h2 {
+    color: var(--navy);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.privacy-content p {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.privacy-content a {
+    color: var(--action-green);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.privacy-content a:hover {
+    text-decoration: underline;
+}
+
+.privacy-list {
+    margin: 1rem 0 1.5rem 1.2rem;
+}
+
+.privacy-list li {
+    margin-bottom: 0.6rem;
+}
+
+.privacy-note-inline {
+    background: #f4f7f6;
+    border-left: 4px solid var(--action-green);
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: var(--slate) !important;
+}
+
+.privacy-cta {
+    background: var(--light-navy);
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.privacy-cta h2 {
+    color: var(--white);
+}
+
+.privacy-cta p {
+    color: var(--slate);
+}
+
+.footer-links {
+    margin-top: 1rem;
+}
+
+.footer-links a {
+    color: var(--slate);
+    margin: 0 0.6rem;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: var(--action-green);
+}
+
+/* Mobile Privacy Page */
+
+@media (max-width: 768px) {
+    .privacy-hero {
+        padding: 60px 0;
+    }
+
+    .privacy-hero h1 {
+        font-size: 2rem;
+    }
+
+    .privacy-content {
+        padding: 1.5rem;
+        border-radius: 10px;
+    }
+
+    .privacy-page {
+        padding: 40px 0;
+    }
+}
