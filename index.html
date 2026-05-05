@@ -2,10 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self';
+    style-src 'self' https://fonts.googleapis.com;
+    font-src https://fonts.gstatic.com;
+    img-src 'self' data:;
+    connect-src https://formspree.io;
+    form-action https://formspree.io;
+    object-src 'none';
+    base-uri 'self';
+    upgrade-insecure-requests;
+">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Praxis Insights | Data to Decisions to Delivery</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:ital@1&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -144,27 +157,30 @@
 
             <div class="lead-form">
                 <form id="leadMagnetForm" action="https://formspree.io/f/meevdgpv" method="POST">
+                    <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off">
+
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="Full Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Work Email" required>
+                        <input type="text" name="name" placeholder="Full Name" maxlength="80" autocomplete="name" required>
                     </div>
 
-                    <!-- Optional: tag the lead -->
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Work Email" maxlength="120" autocomplete="email" required>
+                    </div>
+
                     <input type="hidden" name="source" value="Dashboard Checklist">
+                    <input type="hidden" name="_subject" value="New Dashboard Checklist Lead - Praxis Insights">
 
                     <button type="submit" class="btn-main full-width">
                         Download Free Checklist
                     </button>
+
                     <p class="privacy-note">🔒 No spam. Just valuable insights.</p>
-                    <input type="hidden" name="source" value="Dashboard Checklist">
                 </form>
                 <div id="leadSuccess" class="hidden">
                     <div class="success-content">
                         <h3>Your Checklist is Ready</h3>
                         <p>Your download should open automatically.</p>
-                        <p>If not, <a href="assets/dashboard-audit-checklist.pdf" target="_blank">click here</a>.</p>
+                        <p>If not, <a href="assets/dashboard-audit-checklist.pdf" target="_blank" rel="noopener noreferrer">click here</a>.</p>
 
                         <br>
 
@@ -199,17 +215,22 @@
         
         <div class="form-container">
             <form id="analyticsContactForm" action="https://formspree.io/f/meevdgpv" method="POST">
+                <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off">
+
                 <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    <label for="contact-name">Full Name</label>
+                    <input type="text" id="contact-name" name="name" placeholder="John Doe" maxlength="80" autocomplete="name" required>
                 </div>
+
                 <div class="form-group">
-                    <label for="email">Work Email</label>
-                    <input type="email" id="email" name="email" placeholder="john@company.com" required>
+                    <label for="contact-email">Work Email</label>
+                    <input type="email" id="contact-email" name="email" placeholder="john@company.com" maxlength="120" autocomplete="email" required>
                 </div>
+
                 <div class="form-group">
                     <label for="service">Interested In</label>
-                    <select id="service" name="service">
+                    <select id="service" name="service" required>
+                        <option value="">Select a service</option>
                         <option value="reporting">Financial Reporting</option>
                         <option value="dashboards">Custom Dashboards</option>
                         <option value="automation">Data Automation</option>
@@ -217,13 +238,17 @@
                         <option value="workflow-optimization">Workflow Optimization</option>
                     </select>
                 </div>
+
                 <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Briefly describe your data challenges..."></textarea>
+                    <textarea id="message" name="message" rows="4" maxlength="1000" placeholder="Briefly describe your data challenges..."></textarea>
                 </div>
+
+                <input type="hidden" name="source" value="Contact Form - Praxis Insights">
+                <input type="hidden" name="_subject" value="New Data Audit Inquiry - Praxis Insights">
+
                 <button type="submit" class="btn-main full-width">Send Message</button>
                 <p class="privacy-note">🔒 Your data is processed securely and never shared.</p>
-                <input type="hidden" name="source" value="Contact Form - Praxis Insights">
             </form>
             <div id="formSuccess" class="hidden">
                 <div class="success-content">
@@ -239,8 +264,8 @@
         <div class="container">
             <p>&copy; 2026 Praxis Insights. All rights reserved.</p>
             <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
             </div>
         </div>
     </footer>

@@ -1,105 +1,118 @@
-// Simple Scroll Reveal Effect
+"use strict";
+
+/* =========================
+   Scroll Reveal Effect
+========================= */
+
 const observerOptions = {
     threshold: 0.1
 };
 
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
+            entry.target.classList.add("is-visible");
+            obs.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-// Target all sections and cards
-document.querySelectorAll('section, .card').forEach(el => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(20px)";
-    el.style.transition = "all 0.6s ease-out";
+document.querySelectorAll("section, .card").forEach(el => {
+    el.classList.add("reveal");
     observer.observe(el);
 });
 
-document.getElementById('analyticsContactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
 
-    const form = this;
-    const data = new FormData(form);
+/* =========================
+   Reusable Formspree Handler
+========================= */
 
-    const btn = form.querySelector('button');
-    const originalText = btn.innerText;
-    btn.innerText = "Sending...";
-    btn.disabled = true;
+async function submitFormToFormspree(form, successElementId, options = {}) {
+    const successElement = document.getElementById(successElementId);
+    const submitButton = form.querySelector("button[type='submit']");
+
+    if (!successElement || !submitButton) return;
+
+    const originalButtonText = submitButton.innerText;
+
+    submitButton.innerText = "Sending...";
+    submitButton.disabled = true;
 
     try {
         const response = await fetch(form.action, {
             method: form.method,
-            body: data,
+            body: new FormData(form),
             headers: {
-                'Accept': 'application/json'
+                "Accept": "application/json"
             }
         });
 
-        if (response.ok) {
-            form.classList.add('hidden');
-            document.getElementById('formSuccess').classList.remove('hidden');
-        } else {
-            alert("Something went wrong. Please try again.");
-            btn.innerText = originalText;
-            btn.disabled = false;
+        if (!response.ok) {
+            throw new Error("Form submission failed");
         }
 
+        form.classList.add("hidden");
+        successElement.classList.remove("hidden");
+
+        if (options.downloadUrl) {
+            window.open(options.downloadUrl, "_blank", "noopener,noreferrer");
+        }
+
+        form.reset();
+
     } catch (error) {
-        alert("Error submitting form.");
-        btn.innerText = originalText;
-        btn.disabled = false;
+        alert("Something went wrong. Please try again.");
+        submitButton.innerText = originalButtonText;
+        submitButton.disabled = false;
     }
-});
+}
 
-document.getElementById('leadMagnetForm').addEventListener('submit', function(e) {
-    e.preventDefault();
 
-    this.classList.add('hidden');
-    document.getElementById('leadSuccess').classList.remove('hidden');
+/* =========================
+   Contact Form
+========================= */
 
-    console.log("Lead magnet captured");
-});
+const contactForm = document.getElementById("analyticsContactForm");
 
-document.getElementById('leadMagnetForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
+if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    const form = this;
-    const data = new FormData(form);
+        submitFormToFormspree(contactForm, "formSuccess");
+    });
+}
 
-    try {
-        // Send to Formspree
-        const response = await fetch(form.action, {
-            method: form.method,
-            body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
+
+/* =========================
+   Lead Magnet Form
+========================= */
+
+const leadMagnetForm = document.getElementById("leadMagnetForm");
+
+if (leadMagnetForm) {
+    leadMagnetForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        submitFormToFormspree(leadMagnetForm, "leadSuccess", {
+            downloadUrl: "assets/dashboard-audit-checklist.pdf"
         });
+    });
+}
 
-        if (response.ok) {
-            // Show success message
-            form.classList.add('hidden');
-            document.getElementById('leadSuccess').classList.remove('hidden');
 
-            // Trigger PDF download
-            window.open('assets/dashboard-audit-checklist.pdf', '_blank');
+/* =========================
+   Prefill Contact Form
+========================= */
 
-        } else {
-            alert("Something went wrong. Please try again.");
-        }
+function prefillAudit() {
+    const serviceDropdown = document.getElementById("service");
+    const messageBox = document.getElementById("message");
 
-    } catch (error) {
-        alert("Error submitting form.");
+    if (serviceDropdown) {
+        serviceDropdown.value = "dashboards";
     }
-});
 
-MailApp.sendEmail({
-  to: "mare.stephen@gmail.com.com",
-  subject: "New Lead - Praxis Insights",
-  body: `New lead:\nName: ${data.name}\nEmail: ${data.email}`
-});
+    if (messageBox) {
+        messageBox.value = "I downloaded the dashboard checklist and would like a personalised data audit.";
+    }
+}
