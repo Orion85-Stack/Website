@@ -72,32 +72,32 @@ async function submitFormToFormspree(form, successElementId, options = {}) {
    Contact Form
 ========================= */
 
-const contactForm = document.getElementById("analyticsContactForm");
-
-if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        submitFormToFormspree(contactForm, "formSuccess");
-    });
-}
+// const contactForm = document.getElementById("analyticsContactForm");
+//
+// if (contactForm) {
+//     contactForm.addEventListener("submit", function (e) {
+//         e.preventDefault();
+//
+//         submitFormToFormspree(contactForm, "formSuccess");
+//     });
+// }
 
 
 /* =========================
    Lead Magnet Form
 ========================= */
 
-const leadMagnetForm = document.getElementById("leadMagnetForm");
-
-if (leadMagnetForm) {
-    leadMagnetForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        submitFormToFormspree(leadMagnetForm, "leadSuccess", {
-            downloadUrl: "assets/dashboard-audit-checklist.pdf"
-        });
-    });
-}
+// const leadMagnetForm = document.getElementById("leadMagnetForm");
+//
+// if (leadMagnetForm) {
+//     leadMagnetForm.addEventListener("submit", function (e) {
+//         e.preventDefault();
+//
+//         submitFormToFormspree(leadMagnetForm, "leadSuccess", {
+//             downloadUrl: "assets/dashboard-audit-checklist.pdf"
+//         });
+//     });
+// }
 
 
 /* =========================
